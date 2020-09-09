@@ -1,0 +1,7 @@
+    declare x := 1 ;
+{
+  loop [ x < 2 ]
+  {
+    out x ;
+    } ;
+}
