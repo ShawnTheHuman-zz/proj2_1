@@ -108,7 +108,7 @@ int scanner(Token &get_token){
             inout = vector_string[line_in];
         }else{
             get_token.ID = EOF_tk;
-            get_token.tok_string = token_names[EOF_tk];
+            get_token.instance = token_names[EOF_tk];
             get_token.line_number = (line - 1);
             return 1;
         }
@@ -138,6 +138,8 @@ int scanner(Token &get_token){
         if(isalpha(ch) && isupper(ch)) {        //uppercase
             nxt_char = 0;
         }else if(isalpha(ch) && islower(ch)) {  //lowercase
+            nxt_char = 1;
+        } else if(ch == '_') {
             nxt_char = 1;
         }else if(isdigit(ch)){                  //digit
             nxt_char = 2;
@@ -203,7 +205,7 @@ int valid_operators(char c1, char c2){
 
 int valid_keyword(string tok_str){
 
-    for (int iter = 0; iter < 13; iter++){
+    for (int iter = 0; iter < 14; iter++){
 
         if(tok_str == keywords[iter]){
             //cout << "valid keywords" << endl;
@@ -228,28 +230,28 @@ int final_states(Token &get_token, int nxt_state, string tok_str){
                 if(valid_keyword(tok_str) == 1){
 
                     get_token.ID = KEYW_tk;
-                    get_token.tok_string = token_names[KEYW_tk];
-                    get_token.tok_string.append(" " + tok_str);
+                    get_token.instance = token_names[KEYW_tk];
+                    get_token.instance.append(" " + tok_str);
                 }else{
                     get_token.ID = ID_tk;
-                    get_token.tok_string = token_names[ID_tk];
-                    get_token.tok_string.append(" " + tok_str);
+                    get_token.instance = token_names[ID_tk];
+                    get_token.instance.append(" " + tok_str);
                 }
-                //cout << get_token.tok_string << endl;
+                //cout << get_token.instance << endl;
                 break;
 
             case INT_final_S:
                 get_token.ID = INT_tk;
-                get_token.tok_string = token_names[INT_tk];
-                get_token.tok_string.append(" " + tok_str);
-                //cout << get_token.tok_string << endl;
+                get_token.instance = token_names[INT_tk];
+                get_token.instance.append(" " + tok_str);
+                //cout << get_token.instance << endl;
                 break;
 
             case OPER_final_S:
                 get_token.ID = OP_tk;
-                get_token.tok_string = token_names[OP_tk];
-                get_token.tok_string.append(" " + tok_str);
-                //cout << get_token.tok_string << endl;
+                get_token.instance = token_names[OP_tk];
+                get_token.instance.append(" " + tok_str);
+                //cout << get_token.instance << endl;
                 break;
         }//end switch
 
@@ -262,6 +264,6 @@ int final_states(Token &get_token, int nxt_state, string tok_str){
 
 void display(Token get_token){
     //cout << "++++++display token+++++++" << endl;
-    cout << "Line #" << get_token.line_number << " " << get_token.tok_string << endl;
+    cout << "Line #" << get_token.line_number << " " << get_token.instance << endl;
 }
 

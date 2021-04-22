@@ -18,12 +18,12 @@ void print_preorder(node *tree, int level){
 
     //Append the tokens of a node to the output line.
     for (int i = 0; i < tree->all_toks.size(); i++){
-        line.append(tree->all_toks[i].tok_string);
+        line.append(tree->all_toks[i].instance);
 
         //Separate multiple tokens on a node by a comma, as long
         //as the tokens are integers or identifiers.
         if( ((i + 1) != tree->all_toks.size()) &&
-          (tree->all_toks[i].tok_string != "Operator")){
+          (tree->all_toks[i].instance != "Operator")){
 
             line.append(",");
             line.append(" ");

@@ -14,12 +14,6 @@ int main(int argc, char *argv[]){
     fstream in_file;
     char data[100];
     char src_file[25];
-    //char eof[] = "eof";
-
-    /*
-        No file was given so I created a new file and will write the
-        user input into that new file
-    */
     if(argc == 1){
 
         //create new file to insert input from user

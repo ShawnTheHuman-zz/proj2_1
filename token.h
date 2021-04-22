@@ -15,15 +15,15 @@ typedef enum Token_types{
 
 const string token_names[5] = {"Identifier", "Integer", "Operator", "Keyword", "ENDofFILE"};
 
-const string operators[19] = {":=", "<", ">", "==", ":", "+", "-", "*", "/", "%", ".", "(", ")",
+const string operators[19] = {":=", "=<", "=>", "==", ":", "+", "-", "*", "/", "%", ".", "(", ")",
                       ",", "{", "}", ";", "[", "]"};
 
-const string keywords[13] = {"label", "goto", "loop", "void", "declare", "return", "in", "out",
-                    "program", "iffy", "then", "assign", "data"};
+const string keywords[14] = {"begin","end", "proc", "loop", "void", "exit", "getter", "outter",
+                    "whole", "if", "then", "assign", "data","main"};
 
 typedef struct token{
     token_types ID;
-    string tok_string;
+    string instance;
     int line_number;
 } Token;
 

@@ -1,6 +1,7 @@
-declare x := 5 ;
-{
-   in x ;
-   iffy [ x < 0 ] then
-     out x ; ;
-}
+data _z := 321 ;
+data y := 567 ;
+main
+begin
+data y := 5 ;
+outter x ;
+end
